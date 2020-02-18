@@ -1,25 +1,25 @@
 #!/usr/bin/python3
 """Testing file to test console
 """
-#Imports
+# Imports
 import unittest
 import json
 import pep8
 import console
 import os
 import test
-#Import console
+# Import console
 from console import HBNBCommand
-#Import models
+# Import models
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
-#...
+# ...
 
 
 class TestConsole(unittest.TestCase):
     """Create testcases for the console
     """
-    #First things first, the setupclass
+    # First things first, the setupclass
     @classmethod
     def setUpClass(cls):
         """Called before test in an individual class are run (HHNBCommand)
@@ -32,7 +32,7 @@ class TestConsole(unittest.TestCase):
         """
         del cls.console
 
-    #Clean after run tests
+    # Clean after run tests
     def tearDown(self):
         """Clean file created after run the test (json file)
         """
@@ -41,7 +41,7 @@ class TestConsole(unittest.TestCase):
         except FileNotFoundError:
             pass
 
-    #Run pep8 validate console.py
+    # Run pep8 validate console.py
     def test_console_py(self):
         """pep8 console.py test
         """
@@ -49,7 +49,7 @@ class TestConsole(unittest.TestCase):
         f = p.check_files(['console.py'])
         self.assertEqual(p.total_errors, 0, 'pep8 error found!')
 
-    #TODO-Run test inside console (...)
+    # TODO-Run test inside console (...)
 
 if __name__ == "__main__":
     unittest.main()

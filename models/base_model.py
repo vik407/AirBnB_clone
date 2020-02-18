@@ -16,11 +16,11 @@ class BaseModel():
                     self.id = value
                     continue
                 if key == "created_at":
-                    self.created_at = datetime.strptime(value,
+                    self.__dict__["created_at"] = datetime.strptime(value,
                                                         '%Y-%m-%dT%H:%M:%S.%f')
                     continue
                 if key == "updated_at":
-                    self.updated_at = datetime.strptime(value,
+                    self.__dict__["updated_at"] = datetime.strptime(value,
                                                         '%Y-%m-%dT%H:%M:%S.%f')
                     continue
                 if key == '__class__':
@@ -39,7 +39,7 @@ class BaseModel():
         """Return the string representation
         """
         return ("[{}] ({}) {}".format(self.__class__.__name__,
-                                      self.id, self.__dict__))
+                                      self.id, self.to_dict()))
 
     def save(self):
         """Update date
