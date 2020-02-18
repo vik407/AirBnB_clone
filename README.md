@@ -67,7 +67,50 @@ Write ./monty <file_name>
 * bf - Other tasks in brainfuck languaje.
 
 ## The Monty language
-Monty 0.98 is a scripting language that is first compiled into Monty byte codes (Just like Python). It relies on a unique stack, with specific instructions to manipulate it. The goal of this project is to create an interpreter for Monty ByteCodes files.
+
+..............................
+. AirBnB_clone console V0.1  .
+. For help type: help        .
+..............................
+. github users vik407 leocjj .
+..............................
+
+(hbnb) help
+
+Documented commands (type help <topic>):
+========================================
+EOF  all  create  destroy  help  quit  show
+
+(hbnb) all
+[]
+(hbnb) create
+** class name missing **
+(hbnb) create BaseModel
+31a4d2f9-bd8f-4d14-b724-d086fb80f35c
+(hbnb) show
+** class name missing **
+(hbnb) show BaseModel
+** instance id missing **
+(hbnb) show BaseModel 31a4d2f9-bd8f-4d14-b724-d086fb80f35c
+[BaseModel] (31a4d2f9-bd8f-4d14-b724-d086fb80f35c) {'id': '31a4d2f9-bd8f-4d14-b724-d086fb80f35c', 'created_at': datetime.datetime(2020, 2, 15, 19, 22, 0, 96643), 'updated_at': datetime.datetime(2020, 2, 15, 19, 22, 0, 96682)}
+(hbnb) all
+["[BaseModel] (31a4d2f9-bd8f-4d14-b724-d086fb80f35c) {'id': '31a4d2f9-bd8f-4d14-b724-d086fb80f35c', 'created_at': datetime.datetime(2020, 2, 15, 19, 22, 0, 96643), 'updated_at': datetime.datetime(2020, 2, 15, 19, 22, 0, 96682)}"]
+(hbnb) all MyClass
+** class doesn't exist **
+(hbnb) all BaseModel
+["[BaseModel] (31a4d2f9-bd8f-4d14-b724-d086fb80f35c) {'id': '31a4d2f9-bd8f-4d14-b724-d086fb80f35c', 'created_at': datetime.datetime(2020, 2, 15, 19, 22, 0, 96643), 'updated_at': datetime.datetime(2020, 2, 15, 19, 22, 0, 96682)}"]
+(hbnb) destroy
+** class name missing **
+(hbnb) destroy BaseModel
+** instance id missing **
+(hbnb) destroy BaseModel 31a4d2f9-bd8f-4d14-b724-d086fb80f35c
+(hbnb) show BaseModel 31a4d2f9-bd8f-4d14-b724-d086fb80f35c
+** no instance found **
+(hbnb) all BaseModel
+[]
+(hbnb) all
+[]
+(hbnb)
 
 ## Authors
 
