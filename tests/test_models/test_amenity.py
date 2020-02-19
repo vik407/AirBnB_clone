@@ -79,5 +79,6 @@ class TestAmenity(unittest.TestCase):
         """test if dictionary works"""
         self.assertEqual('to_dict' in dir(self.a), True)
 
+
 if __name__ == "__main__":
     unittest.main()

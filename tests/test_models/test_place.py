@@ -96,5 +96,6 @@ class TestPlace(unittest.TestCase):
         """test if dictionary works"""
         self.assertEqual('to_dict' in dir(self.place), True)
 
+
 if __name__ == "__main__":
     unittest.main()

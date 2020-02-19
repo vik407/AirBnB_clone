@@ -89,5 +89,6 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue(hasattr(BaseModel, "save"))
         self.assertTrue(hasattr(BaseModel, "to_dict"))
 
+
 if __name__ == "__main__":
     unittest.main()

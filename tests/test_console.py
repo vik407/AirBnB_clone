@@ -50,17 +50,17 @@ class TestConsole(unittest.TestCase):
             pass
 
     def test_docstrings_in_console(self):
-            """checking for docstrings"""
-            self.assertIsNotNone(console.__doc__)
-            self.assertIsNotNone(HBNBCommand.emptyline.__doc__)
-            self.assertIsNotNone(HBNBCommand.do_quit.__doc__)
-            self.assertIsNotNone(HBNBCommand.do_EOF.__doc__)
-            self.assertIsNotNone(HBNBCommand.do_create.__doc__)
-            self.assertIsNotNone(HBNBCommand.do_show.__doc__)
-            self.assertIsNotNone(HBNBCommand.do_destroy.__doc__)
-            self.assertIsNotNone(HBNBCommand.do_all.__doc__)
-            self.assertIsNotNone(HBNBCommand.do_update.__doc__)
-            self.assertIsNotNone(HBNBCommand.default.__doc__)
+        """checking for docstrings"""
+        self.assertIsNotNone(console.__doc__)
+        self.assertIsNotNone(HBNBCommand.emptyline.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_quit.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_EOF.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_create.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_show.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_destroy.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_all.__doc__)
+        self.assertIsNotNone(HBNBCommand.do_update.__doc__)
+        self.assertIsNotNone(HBNBCommand.default.__doc__)
 
     def test_quit(self):
         """test quit
@@ -82,6 +82,7 @@ class TestConsole(unittest.TestCase):
                 "** class doesn't exist **\n", f.getvalue())
         with patch('sys.stdout', new=StringIO()) as f:
             self.consol.onecmd("create User")
+
 
 if __name__ == "__main__":
     unittest.main()

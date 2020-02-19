@@ -72,5 +72,6 @@ class TestReview(unittest.TestCase):
         """test if dictionary works"""
         self.assertEqual('to_dict' in dir(self.rev), True)
 
+
 if __name__ == "__main__":
     unittest.main()
