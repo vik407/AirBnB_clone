@@ -145,6 +145,41 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
                 return
 
+    def do_count(self, line):
+        """Counts the number of instances of <class_name>\n"""
+        if not line:
+            return
+        args = line.split()
+        if args[0] not in self.HBNBCommand_classes:
+            return
+        counter = 0
+        for key, value in storage.all().items():
+            if str(key.split('.')[0]) == args[0]:
+                counter += 1
+        print (counter)
+
+    def precmd(self, line):
+        """Alternative parser for inputs in the form: <ClassName>.command\n"""
+        args = line.split('.', 1)
+        if len(args) == 2:
+            try:
+                clase = args[0]
+                args = args[1].split('(', 1)
+                comando = args[0]
+                id = ''
+                argumentos = ''
+                if len(args) == 2:
+                    args = args[1].split(')', 1)
+                    if len(args) == 2:
+                        id = args[0]
+                        argumentos = args[1]
+                line2 = comando + ' ' + clase + ' ' + id + ' ' + argumentos
+                return line2
+            except IndexError:
+                return line
+        else:
+            return line
+
     def do_quit(self, line):
         """Quit the program!"""
         return True
