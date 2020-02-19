@@ -17,16 +17,9 @@ from models import storage
 class HBNBCommand(cmd.Cmd):
     """ Console class. Used for user command line intructions."""
 
-    intro = '\n..............................\n'\
-            '. AirBnB_clone console V0.1  .\n'\
-            '. For help type: help        .\n'\
-            '..............................\n'\
-            '. github users vik407 leocjj .\n'\
-            '..............................\n'
     prompt = '(hbnb) '
     HBNBCommand_classes = ['BaseModel', 'User',
                            'State', 'City', 'Amenity', 'Place', 'Review']
-    file = None
 
     def do_create(self, line):
         """\nCreate new instance, saves it (to JSON file) and prints the id.\n
@@ -36,13 +29,13 @@ class HBNBCommand(cmd.Cmd):
             return
 
         args = line.split()
-        try:
-            new_instance = eval(args[0] + '()')
-            new_instance.save()
-            print(new_instance.id)
-        except:
+        if args[0] not in self.HBNBCommand_classes:
             print("** class doesn't exist **")
             return
+
+        new_instance = eval(args[0] + '()')
+        new_instance.save()
+        print(new_instance.id)
 
     def do_show(self, line):
         """\nPrints string representation of an instance.\n
