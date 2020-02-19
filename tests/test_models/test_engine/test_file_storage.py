@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """FileStorage test file
 """
-# imports
+
 import unittest
 import os
 import pep8
@@ -14,12 +14,11 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 from models.engine.file_storage import FileStorage
-# ...
 
 
 class TestFileStorage(unittest.TestCase):
-    '''this will test the FileStorage
-    '''
+    """this will test the FileStorage
+    """
 
     @classmethod
     def setUpClass(cls):
@@ -68,8 +67,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertIsNotNone(obj[key])
 
     def test_reload_filestorage(self):
-        """
-        tests reload
+        """tests reload
         """
         self.storage.save()
         Root = os.path.dirname(os.path.abspath("console.py"))

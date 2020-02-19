@@ -1,14 +1,13 @@
 #!/usr/bin/python3
 """BaseModel test file
 """
-# imports
+
 import unittest
 import os
 import pep8
 # import models
 from models.base_model import BaseModel
 from models.state import State
-# ...
 
 
 class TestState(unittest.TestCase):

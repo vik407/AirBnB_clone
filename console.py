@@ -10,7 +10,6 @@ from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
-
 from models import storage
 
 
@@ -146,7 +145,8 @@ class HBNBCommand(cmd.Cmd):
                 return
 
     def do_count(self, line):
-        """Counts the number of instances of <class_name>\n"""
+        """Counts the number of instances of <class_name>\n
+        """
         if not line:
             return
         args = line.split()
@@ -159,7 +159,8 @@ class HBNBCommand(cmd.Cmd):
         print (counter)
 
     def precmd(self, line):
-        """Alternative parser for inputs in the form: <ClassName>.command\n"""
+        """Alternative parser for inputs in the form: <ClassName>.command\n
+        """
         args = line.split('.', 1)
         if len(args) == 2:
             try:

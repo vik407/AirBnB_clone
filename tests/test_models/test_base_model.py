@@ -1,18 +1,18 @@
 #!/usr/bin/python3
 """BaseModel test file
 """
-# imports
+
 import unittest
 import os
 import pep8
 # import models
 from models.base_model import BaseModel
-# ...
 
 
 class TestBaseModel(unittest.TestCase):
     """Set the test for base model class
     """
+
     # First things first, the setupclass
     @classmethod
     def setUpClass(cls):
@@ -35,7 +35,6 @@ class TestBaseModel(unittest.TestCase):
             os.remove("file.json")
         except FileNotFoundError:
             pass
-
         self.assertTrue(os.access('models/base_model.py', os.R_OK))
         self.assertTrue(os.access('models/base_model.py', os.W_OK))
         self.assertTrue(os.access('models/base_model.py', os.X_OK))

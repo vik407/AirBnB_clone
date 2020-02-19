@@ -1,19 +1,19 @@
 #!/usr/bin/python3
 """BaseModel test file
 """
-# imports
+
 import unittest
 import os
 import pep8
 # import models
 from models.base_model import BaseModel
 from models.amenity import Amenity
-# ...
 
 
 class TestAmenity(unittest.TestCase):
     """Set the test for base model class
     """
+    
     # First things first, the setupclass
     @classmethod
     def setUpClass(cls):

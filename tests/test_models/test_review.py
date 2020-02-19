@@ -1,19 +1,19 @@
 #!/usr/bin/python3
 """BaseModel test file
 """
-# imports
+
 import unittest
 import os
 import pep8
 # import models
 from models.base_model import BaseModel
 from models.review import Review
-# ...
 
 
 class TestReview(unittest.TestCase):
     """Set the test for base model class
     """
+    
     @classmethod
     def setUpClass(cls):
         """set up for test"""

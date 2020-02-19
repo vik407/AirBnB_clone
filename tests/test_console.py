@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Testing file to test console
 """
-# Imports
+
 import unittest
 from unittest.mock import patch
 from io import StringIO
@@ -21,12 +21,12 @@ from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
 from models.engine.file_storage import FileStorage
-# ...
 
 
 class TestConsole(unittest.TestCase):
     """Create testcases for the console
     """
+    
     # First things first, the setupclass
     @classmethod
     def setUpClass(cls):
