@@ -114,9 +114,11 @@ $
 
 
 ### Other files and folders
-* models - classes implemented .
-* test - test cases.
-* README.md - This readme file.
+* models: classes implemented .
+* models\engine:  classes for serialization and deserialization in JSON file.
+* test: test cases.
+* README.md:  This readme file.
+
 
 ## Examples
 
