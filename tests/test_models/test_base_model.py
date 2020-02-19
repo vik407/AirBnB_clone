@@ -36,6 +36,10 @@ class TestBaseModel(unittest.TestCase):
         except FileNotFoundError:
             pass
 
+        self.assertTrue(os.access('models/base_model.py', os.R_OK))
+        self.assertTrue(os.access('models/base_model.py', os.W_OK))
+        self.assertTrue(os.access('models/base_model.py', os.X_OK))
+
     # Run pep8 validate console.py
     def test_base_model_py(self):
         """pep8 base_model.py test

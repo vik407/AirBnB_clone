@@ -7,80 +7,85 @@ import os
 import pep8
 # import models
 from models.base_model import BaseModel
-from models.amenity import Amenity
+from models.user import User
 # ...
 
 
-class TestAmenity(unittest.TestCase):
+class TestUser(unittest.TestCase):
     """Set the test for base model class
     """
-    # First things first, the setupclass
-    @classmethod
-    def setUpClass(cls):
-        """Called before test in an individual class are run
-        """
-        cls.a = Amenity()
-        cls.a.name = "Pool"
 
-    @classmethod
-    def tearDown(cls):
-        """Called after test in an individual class have run
-        """
-        del cls.a
 
-    # Clean after run tests
-    def tearDown(self):
-        """Clean file created after run the test (json file)
-        """
-        try:
-            os.remove("file.json")
-        except FileNotFoundError:
-            pass
+@classmethod
+def setUpClass(cls):
+    """set up for test"""
+    cls.user = User()
+    cls.user.first_name = "John"
+    cls.user.last_name = "Doe"
+    cls.user.email = "johndoe@mail.com"
+    cls.user.password = "abc12345"
 
-    # Run pep8 validate amenity.py
-    def test_amenity_py(self):
-        """pep8 amenity.py test
-        """
-        s = pep8.StyleGuide(quiet=True)
-        f = s.check_files(['models/amenity.py'])
-        self.assertEqual(f.total_errors, 0, 'pep8 error found!')
 
-    # Docstrings
-    def test_docstrings_amenity(self):
-        """Find docstrings on amenity file
-        """
-        self.assertIsNotNone(Amenity.__doc__)
+@classmethod
+def teardown(cls):
+    """at the end of the test this will tear it down"""
+    del cls.user
 
-    # Attributes
-    def test_amenity_attributes(self):
-        """Validate attrs
-        """
-        self.assertTrue('id' in self.amenity.__dict__)
-        self.assertTrue('created_at' in self.amenity.__dict__)
-        self.assertTrue('updated_at' in self.amenity.__dict__)
-        self.assertTrue('name' in self.amenity.__dict__)
 
-    def test_amenity_subclass(self):
-        """Valitate if comes from BaseModel - subclass
-        """
-        self.assertTrue(issubclass(self.amenity.__class__, BaseModel), True)
+def tearDown(self):
+    """teardown"""
+    try:
+        os.remove("file.json")
+    except Exception:
+        pass
 
-    # Check class for the listing methods
-    def test_attribute_amenity(self):
-        """Validate if comes name on amenity
-        """
-        self.assertEqual(type(self.amenity.name), str)
 
-    def test_amenity_save(self):
-        """Save method works?
-        """
-        self.amenity.save()
-        self.assertNotEqual(self.amenity.created_at, self.amenity.updated_at)
+def test_pep8_User(self):
+    """Tests pep8 style"""
+    style = pep8.StyleGuide(quiet=True)
+    p = style.check_files(['models/user.py'])
+    self.assertEqual(p.total_errors, 0, "fix pep8")
 
-    def test_amenity_to_dict(self):
-        """to dict works?
-        """
-        self.assertEqual('to_dict' in dir(self.amenity), True)
+
+def test_checking_for_docstring_User(self):
+    """checking for docstrings"""
+    self.assertIsNotNone(User.__doc__)
+
+
+def test_attributes_User(self):
+    """chekcing if User have attributes"""
+    self.assertTrue('email' in self.user.__dict__)
+    self.assertTrue('id' in self.user.__dict__)
+    self.assertTrue('created_at' in self.user.__dict__)
+    self.assertTrue('updated_at' in self.user.__dict__)
+    self.assertTrue('password' in self.user.__dict__)
+    self.assertTrue('first_name' in self.user.__dict__)
+    self.assertTrue('last_name' in self.user.__dict__)
+
+
+def test_is_subclass_User(self):
+    """test if User is subclass of Basemodel"""
+    self.assertTrue(issubclass(self.user.__class__, BaseModel), True)
+
+
+def test_attribute_types_User(self):
+    """test attribute type for User"""
+    self.assertEqual(type(self.user.email), str)
+    self.assertEqual(type(self.user.password), str)
+    self.assertEqual(type(self.user.first_name), str)
+    self.assertEqual(type(self.user.first_name), str)
+
+
+def test_save_User(self):
+    """test if the save works"""
+    self.user.save()
+    self.assertNotEqual(self.user.created_at, self.user.updated_at)
+
+
+def test_to_dict_User(self):
+    """test if dictionary works"""
+    self.assertEqual('to_dict' in dir(self.user), True)
+
 
 if __name__ == "__main__":
     unittest.main()

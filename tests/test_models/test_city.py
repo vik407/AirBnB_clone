@@ -7,80 +7,68 @@ import os
 import pep8
 # import models
 from models.base_model import BaseModel
-from models.amenity import Amenity
+from models.city import City
 # ...
 
 
 class TestAmenity(unittest.TestCase):
-    """Set the test for base model class
-    """
-    # First things first, the setupclass
+    """Test the city class"""
+
     @classmethod
     def setUpClass(cls):
-        """Called before test in an individual class are run
-        """
-        cls.a = Amenity()
-        cls.a.name = "Pool"
+        """set up for test"""
+        cls.city = City()
+        cls.city.name = "LA"
+        cls.city.state_id = "CA"
 
     @classmethod
-    def tearDown(cls):
-        """Called after test in an individual class have run
-        """
-        del cls.a
+    def teardown(cls):
+        """at the end of the test this will tear it down"""
+        del cls.city
 
-    # Clean after run tests
     def tearDown(self):
-        """Clean file created after run the test (json file)
-        """
+        """teardown"""
         try:
             os.remove("file.json")
-        except FileNotFoundError:
+        except Exception:
             pass
 
-    # Run pep8 validate amenity.py
-    def test_amenity_py(self):
-        """pep8 amenity.py test
-        """
-        s = pep8.StyleGuide(quiet=True)
-        f = s.check_files(['models/amenity.py'])
-        self.assertEqual(f.total_errors, 0, 'pep8 error found!')
+    def test_pep8_City(self):
+        """Tests pep8 style"""
+        style = pep8.StyleGuide(quiet=True)
+        p = style.check_files(['models/city.py'])
+        self.assertEqual(p.total_errors, 0, "fix pep8")
 
-    # Docstrings
-    def test_docstrings_amenity(self):
-        """Find docstrings on amenity file
-        """
-        self.assertIsNotNone(Amenity.__doc__)
+    def test_checking_for_docstring_City(self):
+        """checking for docstrings"""
+        self.assertIsNotNone(City.__doc__)
 
-    # Attributes
-    def test_amenity_attributes(self):
-        """Validate attrs
-        """
-        self.assertTrue('id' in self.amenity.__dict__)
-        self.assertTrue('created_at' in self.amenity.__dict__)
-        self.assertTrue('updated_at' in self.amenity.__dict__)
-        self.assertTrue('name' in self.amenity.__dict__)
+    def test_attributes_City(self):
+        """chekcing if City have attributes"""
+        self.assertTrue('id' in self.city.__dict__)
+        self.assertTrue('created_at' in self.city.__dict__)
+        self.assertTrue('updated_at' in self.city.__dict__)
+        self.assertTrue('state_id' in self.city.__dict__)
+        self.assertTrue('name' in self.city.__dict__)
 
-    def test_amenity_subclass(self):
-        """Valitate if comes from BaseModel - subclass
-        """
-        self.assertTrue(issubclass(self.amenity.__class__, BaseModel), True)
+    def test_is_subclass_City(self):
+        """test if City is subclass of Basemodel"""
+        self.assertTrue(issubclass(self.city.__class__, BaseModel), True)
 
-    # Check class for the listing methods
-    def test_attribute_amenity(self):
-        """Validate if comes name on amenity
-        """
-        self.assertEqual(type(self.amenity.name), str)
+    def test_attribute_types_City(self):
+        """test attribute type for City"""
+        self.assertEqual(type(self.city.name), str)
+        self.assertEqual(type(self.city.state_id), str)
 
-    def test_amenity_save(self):
-        """Save method works?
-        """
-        self.amenity.save()
-        self.assertNotEqual(self.amenity.created_at, self.amenity.updated_at)
+    def test_save_City(self):
+        """test if the save works"""
+        self.city.save()
+        self.assertNotEqual(self.city.created_at, self.city.updated_at)
 
-    def test_amenity_to_dict(self):
-        """to dict works?
-        """
-        self.assertEqual('to_dict' in dir(self.amenity), True)
+    def test_to_dict_City(self):
+        """test if dictionary works"""
+        self.assertEqual('to_dict' in dir(self.city), True)
+
 
 if __name__ == "__main__":
     unittest.main()

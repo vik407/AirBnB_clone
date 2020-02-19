@@ -7,80 +7,65 @@ import os
 import pep8
 # import models
 from models.base_model import BaseModel
-from models.amenity import Amenity
+from models.state import State
 # ...
 
 
-class TestAmenity(unittest.TestCase):
+class TestState(unittest.TestCase):
     """Set the test for base model class
     """
-    # First things first, the setupclass
+
     @classmethod
     def setUpClass(cls):
-        """Called before test in an individual class are run
-        """
-        cls.a = Amenity()
-        cls.a.name = "Pool"
+        """set up for test"""
+        cls.state = State()
+        cls.state.name = "CA"
 
     @classmethod
-    def tearDown(cls):
-        """Called after test in an individual class have run
-        """
-        del cls.a
+    def teardown(cls):
+        """at the end of the test this will tear it down"""
+        del cls.state
 
-    # Clean after run tests
     def tearDown(self):
-        """Clean file created after run the test (json file)
-        """
+        """teardown"""
         try:
             os.remove("file.json")
-        except FileNotFoundError:
+        except Exception:
             pass
 
-    # Run pep8 validate amenity.py
-    def test_amenity_py(self):
-        """pep8 amenity.py test
-        """
-        s = pep8.StyleGuide(quiet=True)
-        f = s.check_files(['models/amenity.py'])
-        self.assertEqual(f.total_errors, 0, 'pep8 error found!')
+    def test_pep8_Review(self):
+        """Tests pep8 style"""
+        style = pep8.StyleGuide(quiet=True)
+        p = style.check_files(['models/state.py'])
+        self.assertEqual(p.total_errors, 0, "fix pep8")
 
-    # Docstrings
-    def test_docstrings_amenity(self):
-        """Find docstrings on amenity file
-        """
-        self.assertIsNotNone(Amenity.__doc__)
+    def test_checking_for_docstring_State(self):
+        """checking for docstrings"""
+        self.assertIsNotNone(State.__doc__)
 
-    # Attributes
-    def test_amenity_attributes(self):
-        """Validate attrs
-        """
-        self.assertTrue('id' in self.amenity.__dict__)
-        self.assertTrue('created_at' in self.amenity.__dict__)
-        self.assertTrue('updated_at' in self.amenity.__dict__)
-        self.assertTrue('name' in self.amenity.__dict__)
+    def test_attributes_State(self):
+        """chekcing if State have attributes"""
+        self.assertTrue('id' in self.state.__dict__)
+        self.assertTrue('created_at' in self.state.__dict__)
+        self.assertTrue('updated_at' in self.state.__dict__)
+        self.assertTrue('name' in self.state.__dict__)
 
-    def test_amenity_subclass(self):
-        """Valitate if comes from BaseModel - subclass
-        """
-        self.assertTrue(issubclass(self.amenity.__class__, BaseModel), True)
+    def test_is_subclass_State(self):
+        """test if State is subclass of BaseModel"""
+        self.assertTrue(issubclass(self.state.__class__, BaseModel), True)
 
-    # Check class for the listing methods
-    def test_attribute_amenity(self):
-        """Validate if comes name on amenity
-        """
-        self.assertEqual(type(self.amenity.name), str)
+    def test_attribute_types_State(self):
+        """test attribute type for State"""
+        self.assertEqual(type(self.state.name), str)
 
-    def test_amenity_save(self):
-        """Save method works?
-        """
-        self.amenity.save()
-        self.assertNotEqual(self.amenity.created_at, self.amenity.updated_at)
+    def test_save_State(self):
+        """test if the save works"""
+        self.state.save()
+        self.assertNotEqual(self.state.created_at, self.state.updated_at)
 
-    def test_amenity_to_dict(self):
-        """to dict works?
-        """
-        self.assertEqual('to_dict' in dir(self.amenity), True)
+    def test_to_dict_State(self):
+        """test if dictionary works"""
+        self.assertEqual('to_dict' in dir(self.state), True)
 
 if __name__ == "__main__":
     unittest.main()

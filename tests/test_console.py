@@ -3,6 +3,8 @@
 """
 # Imports
 import unittest
+from unittest.mock import patch
+from io import StringIO
 import json
 import pep8
 import console
@@ -12,6 +14,12 @@ import test
 from console import HBNBCommand
 # Import models
 from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 from models.engine.file_storage import FileStorage
 # ...
 
@@ -24,7 +32,7 @@ class TestConsole(unittest.TestCase):
     def setUpClass(cls):
         """Called before test in an individual class are run (HHNBCommand)
         """
-        cls.console = HBNBCommand()
+        cls.consol = HBNBCommand()
 
     @classmethod
     def tearDown(cls):
@@ -41,15 +49,39 @@ class TestConsole(unittest.TestCase):
         except FileNotFoundError:
             pass
 
-    # Run pep8 validate console.py
-    def test_console_py(self):
-        """pep8 console.py test
-        """
-        s = pep8.StyleGuide(quiet=True)
-        f = s.check_files(['console.py'])
-        self.assertEqual(f.total_errors, 0, 'pep8 error found!')
+    def test_docstrings_in_console(self):
+            """checking for docstrings"""
+            self.assertIsNotNone(console.__doc__)
+            self.assertIsNotNone(HBNBCommand.emptyline.__doc__)
+            self.assertIsNotNone(HBNBCommand.do_quit.__doc__)
+            self.assertIsNotNone(HBNBCommand.do_EOF.__doc__)
+            self.assertIsNotNone(HBNBCommand.do_create.__doc__)
+            self.assertIsNotNone(HBNBCommand.do_show.__doc__)
+            self.assertIsNotNone(HBNBCommand.do_destroy.__doc__)
+            self.assertIsNotNone(HBNBCommand.do_all.__doc__)
+            self.assertIsNotNone(HBNBCommand.do_update.__doc__)
+            self.assertIsNotNone(HBNBCommand.default.__doc__)
 
-    # TODO-Run test inside console (...)
+    def test_quit(self):
+        """test quit
+        """
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.consol.onecmd("quit")
+            self.assertEqual('', f.getvalue())
+
+    def test_create(self):
+        """Test create command
+        """
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.consol.onecmd("create")
+            self.assertEqual(
+                "** class name missing **\n", f.getvalue())
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.consol.onecmd("create asdfsfsd")
+            self.assertEqual(
+                "** class doesn't exist **\n", f.getvalue())
+        with patch('sys.stdout', new=StringIO()) as f:
+            self.consol.onecmd("create User")
 
 if __name__ == "__main__":
     unittest.main()

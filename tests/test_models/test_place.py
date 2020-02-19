@@ -7,80 +7,94 @@ import os
 import pep8
 # import models
 from models.base_model import BaseModel
-from models.amenity import Amenity
+from models.place import Place
 # ...
 
 
-class TestAmenity(unittest.TestCase):
-    """Set the test for base model class
-    """
-    # First things first, the setupclass
+class TestPlace(unittest.TestCase):
+    """this will test the place class"""
+
     @classmethod
     def setUpClass(cls):
-        """Called before test in an individual class are run
-        """
-        cls.a = Amenity()
-        cls.a.name = "Pool"
+        """set up for test"""
+        cls.place = Place()
+        cls.place.city_id = "1234-abcd"
+        cls.place.user_id = "4321-dcba"
+        cls.place.name = "Zonamerica"
+        cls.place.description = "LOREM IPSUM"
+        cls.place.number_rooms = 1000000
+        cls.place.number_bathrooms = 1
+        cls.place.max_guest = 607360
+        cls.place.price_by_night = 10
+        cls.place.latitude = 160.0
+        cls.place.longitude = 120.0
+        cls.place.amenity_ids = ["1324-lksdjkl"]
 
     @classmethod
-    def tearDown(cls):
-        """Called after test in an individual class have run
-        """
-        del cls.a
+    def teardown(cls):
+        """at the end of the test this will tear it down"""
+        del cls.place
 
-    # Clean after run tests
     def tearDown(self):
-        """Clean file created after run the test (json file)
-        """
+        """teardown"""
         try:
             os.remove("file.json")
-        except FileNotFoundError:
+        except Exception:
             pass
 
-    # Run pep8 validate amenity.py
-    def test_amenity_py(self):
-        """pep8 amenity.py test
-        """
-        s = pep8.StyleGuide(quiet=True)
-        f = s.check_files(['models/amenity.py'])
-        self.assertEqual(f.total_errors, 0, 'pep8 error found!')
+    def test_pep8_Place(self):
+        """Tests pep8 style"""
+        style = pep8.StyleGuide(quiet=True)
+        p = style.check_files(['models/place.py'])
+        self.assertEqual(p.total_errors, 0, "fix pep8")
 
-    # Docstrings
-    def test_docstrings_amenity(self):
-        """Find docstrings on amenity file
-        """
-        self.assertIsNotNone(Amenity.__doc__)
+    def test_checking_for_docstring_Place(self):
+        """checking for docstrings"""
+        self.assertIsNotNone(Place.__doc__)
 
-    # Attributes
-    def test_amenity_attributes(self):
-        """Validate attrs
-        """
-        self.assertTrue('id' in self.amenity.__dict__)
-        self.assertTrue('created_at' in self.amenity.__dict__)
-        self.assertTrue('updated_at' in self.amenity.__dict__)
-        self.assertTrue('name' in self.amenity.__dict__)
+    def test_attributes_Place(self):
+        """chekcing if amenity have attributes"""
+        self.assertTrue('id' in self.place.__dict__)
+        self.assertTrue('created_at' in self.place.__dict__)
+        self.assertTrue('updated_at' in self.place.__dict__)
+        self.assertTrue('city_id' in self.place.__dict__)
+        self.assertTrue('user_id' in self.place.__dict__)
+        self.assertTrue('name' in self.place.__dict__)
+        self.assertTrue('description' in self.place.__dict__)
+        self.assertTrue('number_rooms' in self.place.__dict__)
+        self.assertTrue('number_bathrooms' in self.place.__dict__)
+        self.assertTrue('max_guest' in self.place.__dict__)
+        self.assertTrue('price_by_night' in self.place.__dict__)
+        self.assertTrue('latitude' in self.place.__dict__)
+        self.assertTrue('longitude' in self.place.__dict__)
+        self.assertTrue('amenity_ids' in self.place.__dict__)
 
-    def test_amenity_subclass(self):
-        """Valitate if comes from BaseModel - subclass
-        """
-        self.assertTrue(issubclass(self.amenity.__class__, BaseModel), True)
+    def test_is_subclass_Place(self):
+        """test if Place is subclass of Basemodel"""
+        self.assertTrue(issubclass(self.place.__class__, BaseModel), True)
 
-    # Check class for the listing methods
-    def test_attribute_amenity(self):
-        """Validate if comes name on amenity
-        """
-        self.assertEqual(type(self.amenity.name), str)
+    def test_attribute_types_Place(self):
+        """test attribute type for Place"""
+        self.assertEqual(type(self.place.city_id), str)
+        self.assertEqual(type(self.place.user_id), str)
+        self.assertEqual(type(self.place.name), str)
+        self.assertEqual(type(self.place.description), str)
+        self.assertEqual(type(self.place.number_rooms), int)
+        self.assertEqual(type(self.place.number_bathrooms), int)
+        self.assertEqual(type(self.place.max_guest), int)
+        self.assertEqual(type(self.place.price_by_night), int)
+        self.assertEqual(type(self.place.latitude), float)
+        self.assertEqual(type(self.place.longitude), float)
+        self.assertEqual(type(self.place.amenity_ids), list)
 
-    def test_amenity_save(self):
-        """Save method works?
-        """
-        self.amenity.save()
-        self.assertNotEqual(self.amenity.created_at, self.amenity.updated_at)
+    def test_save_Place(self):
+        """test if the save works"""
+        self.place.save()
+        self.assertNotEqual(self.place.created_at, self.place.updated_at)
 
-    def test_amenity_to_dict(self):
-        """to dict works?
-        """
-        self.assertEqual('to_dict' in dir(self.amenity), True)
+    def test_to_dict_Place(self):
+        """test if dictionary works"""
+        self.assertEqual('to_dict' in dir(self.place), True)
 
 if __name__ == "__main__":
     unittest.main()

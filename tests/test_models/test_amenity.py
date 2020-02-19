@@ -45,42 +45,39 @@ class TestAmenity(unittest.TestCase):
         f = s.check_files(['models/amenity.py'])
         self.assertEqual(f.total_errors, 0, 'pep8 error found!')
 
-    # Docstrings
-    def test_docstrings_amenity(self):
-        """Find docstrings on amenity file
-        """
+    def test_pep8_Amenity(self):
+        """Tests pep8 style"""
+        style = pep8.StyleGuide(quiet=True)
+        p = style.check_files(['models/amenity.py'])
+        self.assertEqual(p.total_errors, 0, "fix pep8")
+
+    def test_checking_for_docstring_Amenity(self):
+        """checking for docstrings"""
         self.assertIsNotNone(Amenity.__doc__)
 
-    # Attributes
-    def test_amenity_attributes(self):
-        """Validate attrs
-        """
-        self.assertTrue('id' in self.amenity.__dict__)
-        self.assertTrue('created_at' in self.amenity.__dict__)
-        self.assertTrue('updated_at' in self.amenity.__dict__)
-        self.assertTrue('name' in self.amenity.__dict__)
+    def test_attributes_Amenity(self):
+        """chekcing if amenity have attibutes"""
+        self.assertTrue('id' in self.a.__dict__)
+        self.assertTrue('created_at' in self.a.__dict__)
+        self.assertTrue('updated_at' in self.a.__dict__)
+        self.assertTrue('name' in self.a.__dict__)
 
-    def test_amenity_subclass(self):
-        """Valitate if comes from BaseModel - subclass
-        """
-        self.assertTrue(issubclass(self.amenity.__class__, BaseModel), True)
+    def test_is_subclass_Amenity(self):
+        """test if Amenity is subclass of Basemodel"""
+        self.assertTrue(issubclass(self.a.__class__, BaseModel), True)
 
-    # Check class for the listing methods
-    def test_attribute_amenity(self):
-        """Validate if comes name on amenity
-        """
-        self.assertEqual(type(self.amenity.name), str)
+    def test_attribute_types_Amenity(self):
+        """test attribute type for Amenity"""
+        self.assertEqual(type(self.a.name), str)
 
-    def test_amenity_save(self):
-        """Save method works?
-        """
-        self.amenity.save()
-        self.assertNotEqual(self.amenity.created_at, self.amenity.updated_at)
+    def test_save_Amenity(self):
+        """test if the save works"""
+        self.a.save()
+        self.assertNotEqual(self.a.created_at, self.a.updated_at)
 
-    def test_amenity_to_dict(self):
-        """to dict works?
-        """
-        self.assertEqual('to_dict' in dir(self.amenity), True)
+    def test_to_dict_Amenity(self):
+        """test if dictionary works"""
+        self.assertEqual('to_dict' in dir(self.a), True)
 
 if __name__ == "__main__":
     unittest.main()
