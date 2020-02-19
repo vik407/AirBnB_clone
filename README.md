@@ -114,9 +114,9 @@ $
 
 
 ### Other files and folders
-* monty.h - doubly linked list representation of a stack (or queue), opcode and its function and prototypes of all functions of the program.
-* bc - test cases.
-* bf - Other tasks in brainfuck languaje.
+* models - classes implemented .
+* test - test cases.
+* README.md - This readme file.
 
 ## Examples
 
