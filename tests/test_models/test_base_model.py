@@ -42,7 +42,7 @@ class TestBaseModel(unittest.TestCase):
         """
         s = pep8.StyleGuide(quiet=True)
         f = s.check_files(['models/base_model.py'])
-        self.assertEqual(s.total_errors, 0, 'pep8 error found!')
+        self.assertEqual(f.total_errors, 0, 'pep8 error found!')
 
     # Docstrings
     def test_docstrings_base_model(self):
@@ -59,7 +59,7 @@ class TestBaseModel(unittest.TestCase):
         """Test the save method
         """
         self.b.save()
-        self.assertEqual(self.b.updated_at, self.b.created_at)
+        self.assertNotEqual(self.b.updated_at, self.b.created_at)
 
     # Test to_dict
     def test_to_dict_base_model(self):
@@ -74,7 +74,7 @@ class TestBaseModel(unittest.TestCase):
     def test_instance_basemodel(self):
         """Instance creation check
         """
-        self.assertTrue(isinstance(self.base, BaseModel))
+        self.assertTrue(isinstance(self.b, BaseModel))
 
     # Check class for the listing methods
     def test_methods_base_model(self):

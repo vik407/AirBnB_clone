@@ -46,8 +46,8 @@ class TestConsole(unittest.TestCase):
         """pep8 console.py test
         """
         s = pep8.StyleGuide(quiet=True)
-        f = p.check_files(['console.py'])
-        self.assertEqual(p.total_errors, 0, 'pep8 error found!')
+        f = s.check_files(['console.py'])
+        self.assertEqual(f.total_errors, 0, 'pep8 error found!')
 
     # TODO-Run test inside console (...)
 

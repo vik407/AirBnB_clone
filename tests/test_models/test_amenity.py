@@ -43,7 +43,7 @@ class TestAmenity(unittest.TestCase):
         """
         s = pep8.StyleGuide(quiet=True)
         f = s.check_files(['models/amenity.py'])
-        self.assertEqual(s.total_errors, 0, 'pep8 error found!')
+        self.assertEqual(f.total_errors, 0, 'pep8 error found!')
 
     # Docstrings
     def test_docstrings_amenity(self):
