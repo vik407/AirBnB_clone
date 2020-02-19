@@ -26,7 +26,7 @@ from models.engine.file_storage import FileStorage
 class TestConsole(unittest.TestCase):
     """Create testcases for the console
     """
-    
+
     # First things first, the setupclass
     @classmethod
     def setUpClass(cls):

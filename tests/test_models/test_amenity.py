@@ -13,7 +13,7 @@ from models.amenity import Amenity
 class TestAmenity(unittest.TestCase):
     """Set the test for base model class
     """
-    
+
     # First things first, the setupclass
     @classmethod
     def setUpClass(cls):

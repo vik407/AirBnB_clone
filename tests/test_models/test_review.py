@@ -13,7 +13,7 @@ from models.review import Review
 class TestReview(unittest.TestCase):
     """Set the test for base model class
     """
-    
+
     @classmethod
     def setUpClass(cls):
         """set up for test"""
