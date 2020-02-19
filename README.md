@@ -1,20 +1,20 @@
 # 0x00. AirBnB clone - The console
 
-## First step: Write a command interpreter to manage your AirBnB objects.
+## Command interpreter to manage objects in AirBnB clone.
 
-This is the first step towards building your first full web application: the AirBnB clone. This first step is very important because you will use what you build during this project with all other following projects: HTML/CSS templating, database storage, API, front-end integration…
+This is the first step to build a web application: the AirBnB clone. This will be used during this project and all other following projects: HTML/CSS templating, database storage, API, front-end integration…
 
-Each task is linked and will help you to:
+Each task is linked and will:
 
-* Put in place a parent class (called BaseModel) to take care of the initialization, serialization and deserialization of your future instances
-* create a simple flow of serialization/deserialization: Instance <-> Dictionary <-> JSON string <-> file
-* create all classes used for AirBnB (User, State, City, Place…) that inherit from BaseModel
-* create the first abstracted storage engine of the project: File storage.
-* create all unittests to validate all our classes and storage engine
+* Put in place a parent class (called BaseModel) to take care of the initialization, serialization and deserialization of your future instances.
+* Create a simple flow of serialization/deserialization: Instance <-> Dictionary <-> JSON string <-> file.
+* Create all classes used for AirBnB (User, State, City, Place, Anemity and Review) that inherit from BaseModel.
+* Create the first abstracted storage engine of the project: File storage.
+* Create all unittests to validate all classes and storage engine.
 
 ## What’s a command interpreter?
 
-Do you remember the Shell? It’s exactly the same but limited to a specific use-case. In our case, we want to be able to manage the objects of our project:
+It’s like a shell but limited to a specific use-case. In this case, to be able to manage the objects of the full project:
 
 * Create a new object (ex: a new User or a new Place)
 * Retrieve an object from a file, a database etc…
@@ -102,14 +102,14 @@ $
 
 ## How the program works
 
-| Function | Description | Usage |
+| Commands | Description | Usage |
 | ------ | ------ | ------ |
 | create | Create new instance, saves it (to JSON file) and prints the id. | create <class_name>
-| all | Prints all string representation of all instances based or not on | all [class_name]
+| all | Prints all string representation of all instances based or not on. | all [class_name]
 | destroy | Deletes an instance based on the class name and id. | destroy <class_name> < id > 
 | help | List available commands with "help" or detailed help with "help cmd". | help [command] |
 | show | Prints string representation of an instance. | show <class_name> < id > |
-| update | Updates an instance based on the class name and id by adding or updating attribute (save the change into the JSON file) | update < ClassName > < id > <attr_name> "<attr_value>" |
+| update | Updates an instance based on the class name and id by adding or updating attribute (save the change into the JSON file). | update < ClassName > < id > <attr_name> "<attr_value>" |
 | quit | Quit the program! | quit |
 
 
@@ -212,6 +212,7 @@ b6759f36-d7dc-4eeb-a625-736c70844313
 [City] (b6759f36-d7dc-4eeb-a625-736c70844313) {'id': 'b6759f36-d7dc-4eeb-a625-736c70844313', 'created_at': '2020-02-19T10:40:06.817788', 'updated_at': '2020-02-19T10:40:06.817824', 'name': 'Pereira', '__class__': 'City'}
 (hbnb) 
 (hbnb) quit
+$
 ```
 
 ### Classes implemented
