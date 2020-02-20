@@ -156,7 +156,7 @@ class HBNBCommand(cmd.Cmd):
         for key, value in storage.all().items():
             if str(key.split('.')[0]) == args[0]:
                 counter += 1
-        print (counter)
+        print(counter)
 
     def precmd(self, line):
         """Alternative parser for inputs in the form: <ClassName>.command\n
