@@ -7,8 +7,8 @@ import models
 
 
 class BaseModel():
-""" BaseModel class. Used as base for future classes.
-"""
+    """ BaseModel class. Used as base for future classes.
+    """
     def __init__(self, *args, **kwargs):
         """Validate non interactive and init method
         """
