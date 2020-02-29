@@ -1,0 +1,9 @@
+/* Header styles used in:
+ * 2-index.html
+ */
+/* Header Style */
+header {
+  background-color: #FF0000;
+  width: 100%;
+  height: 70px;
+}
