@@ -3,7 +3,8 @@
  */
 /* Footer Style */
 footer {
-  position: absolute;
+  position: fixed;
+  display: inline-block;
   bottom: 0;
   background-color: white;
   text-align: center;
