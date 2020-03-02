@@ -2,9 +2,6 @@
  */
 /* Section places styles*/
 section.places {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
   width: 100%;
   text-align: center;
   padding-bottom: 70px;
@@ -31,19 +28,19 @@ article .flex-row {
   display: flex;
 }
 
+article .flex-row > h2 {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 40px;
+}
+
 article .flex-space-between {
   justify-content: space-between;
 }
 
 article .flex-space-around {
   justify-content: space-around;
-}
-
-article h2 {
-  flex-grow: 1;
-  text-align: center;
-  font-size: 30px;
-  margin-bottom: 40px;
 }
 
 article .price_by_night {
